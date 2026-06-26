@@ -1,3 +1,0 @@
-{
-  "rewrites": [{ "source": "/appeal-forms", "destination": "/appeal-forms.html" }]
-}
