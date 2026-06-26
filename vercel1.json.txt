@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "appeal-forms/api/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
-}
